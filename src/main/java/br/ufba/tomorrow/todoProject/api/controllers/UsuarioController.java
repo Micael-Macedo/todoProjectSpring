@@ -4,6 +4,7 @@ import br.ufba.tomorrow.todoProject.api.dto.UsuarioCreateDTO;
 import br.ufba.tomorrow.todoProject.api.dto.UsuarioDTO;
 import br.ufba.tomorrow.todoProject.domain.entities.Usuario;
 import br.ufba.tomorrow.todoProject.domain.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioDTO> criar(@RequestBody UsuarioCreateDTO dto){
+    public ResponseEntity<UsuarioDTO> criar(@Valid @RequestBody UsuarioCreateDTO dto){
         return new ResponseEntity<UsuarioDTO>(service.criar(dto), HttpStatus.OK);
     }
 }
